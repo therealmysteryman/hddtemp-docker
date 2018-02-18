@@ -3,11 +3,11 @@
 #
 
 # Pull base image.
-FROM ubuntu
-MAINTAINER Drewster727
+FROM debian
+MAINTAINER Sylvain Desbureaux
 
 # Install hddtemp
-RUN apt-get update && apt-get -y install build-essential hddtemp
+RUN apt update && apt -y install hddtemp && apt-get clean && rm -rf /var/cache/apt/*
 
 # Define default command.
 # example = -d --listen localhost --port 7634 /dev/s*
