@@ -1,0 +1,35 @@
+---
+jobs:
+  docker-lint:
+    docker:
+      - image: vpgrp/linter:docker-lint
+    steps:
+      - checkout
+      - run:
+          name: docker linting
+          command: /usr/bin/docker-lint Dockerfile
+  markdown-lint:
+    docker:
+      - image: vpgrp/linter:markdown-lint
+    steps:
+      - checkout
+      - run:
+          name: markdown linting
+          command: /usr/bin/markdown-lint .
+  build
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t sdesbure/hddtemp:$CIRCLE_BRANCH .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push sdesbure/hddtemp:$CIRCLE_BRANCH
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - docker-lint
+      - markdown-lint
+      - build
+      
