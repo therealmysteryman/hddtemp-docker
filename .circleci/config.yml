@@ -32,6 +32,6 @@ workflows:
       - docker-lint
       - markdown-lint
       - build:
-        requires:
-          - docker-lint
-          - markdown-lint
+          requires:
+            - docker-lint
+            - markdown-lint
