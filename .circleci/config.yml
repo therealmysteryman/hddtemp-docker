@@ -26,7 +26,7 @@ jobs:
       - run: |
           docker build --build-arg VCS_REF=`git rev-parse --short HEAD` \
                        --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
-                       --tags sdesbure/hddtemp:latest .
+                       --tag sdesbure/hddtemp:latest .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push sdesbure/hddtemp:latest
 workflows:
