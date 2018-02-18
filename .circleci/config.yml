@@ -16,7 +16,7 @@ jobs:
       - run:
           name: markdown linting
           command: /usr/bin/markdown-lint .
-  build
+  build:
     docker:
       - image: docker
     steps:
