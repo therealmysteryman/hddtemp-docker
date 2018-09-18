@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:stretch
 
 # Install hddtemp
 RUN apt update && apt -y install hddtemp && apt-get clean && rm -rf /var/cache/apt/*
